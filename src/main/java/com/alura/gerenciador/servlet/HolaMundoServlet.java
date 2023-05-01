@@ -12,6 +12,11 @@ import jakarta.servlet.http.HttpServletResponse;
 //hola
 @WebServlet(urlPatterns = "/hola")
 public class HolaMundoServlet extends HttpServlet{
+	
+	public HolaMundoServlet() {
+		System.out.println("Creando Hola Mundo Servlet");
+	}
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PrintWriter out=resp.getWriter();
