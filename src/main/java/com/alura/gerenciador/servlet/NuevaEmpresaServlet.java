@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class NuevaEmpresaServlet extends HttpServlet {
@@ -17,8 +20,17 @@ public class NuevaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Nueva empresa registrada");
 		String nombreEmpresa=request.getParameter("nombre");
+		String paramFechaApertura=request.getParameter("fecha");
+		Date fechaAbertura=null;
+		try {
+			SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+			fechaAbertura=sdf.parse(paramFechaApertura);
+		} catch (ParseException e) {
+			throw new ServletException(e);
+		}
 		Empresa empresa=new Empresa();
 		empresa.setNombre(nombreEmpresa);
+		empresa.setFechaAbertura(fechaAbertura);
 		DB baseDeDatos=new DB();
 		baseDeDatos.agregarEmpresa(empresa);
 		
