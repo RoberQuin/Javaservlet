@@ -1,20 +1,21 @@
-package com.alura.gerenciador.servlet;
+package com.alura.gerenciador.accion;
+
+import java.io.IOException;
+
+import com.alura.gerenciador.modelo.DB;
+import com.alura.gerenciador.modelo.Empresa;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-public class MostrarEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class MuestraEmpresa {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
-		System.out.println(id);
+		System.out.println("Eliminando una Empresa"+id);
 		DB db=new DB();
 		Empresa emp = db.buscarEmpresaPorId(id);
 		System.out.println(emp.getNombre());
