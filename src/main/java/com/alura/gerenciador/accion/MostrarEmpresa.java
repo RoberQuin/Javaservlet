@@ -10,9 +10,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class MuestraEmpresa {
+public class MostrarEmpresa implements Accion{
 
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 		System.out.println("Eliminando una Empresa"+id);
@@ -20,8 +20,7 @@ public class MuestraEmpresa {
 		Empresa emp = db.buscarEmpresaPorId(id);
 		System.out.println(emp.getNombre());
 		request.setAttribute("empresa", emp);
-		RequestDispatcher rd = request.getRequestDispatcher("/formModificarEmpresa.jsp");
-		rd.forward(request, response);
+		return "forward:formModificarEmpresa.jsp";
 	}
 
 }

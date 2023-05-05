@@ -26,6 +26,7 @@
 			</li>
 			
 		</c:forEach>
-	</ul>
+	</ul><br/>
+	<a href="/gerenciador/entrada?accion=NuevaEmpresaForm">Nueva empresa</a>
 </body>
 </html>

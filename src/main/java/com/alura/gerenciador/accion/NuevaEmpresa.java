@@ -13,9 +13,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class NuevaEmpresa {
+public class NuevaEmpresa implements Accion{
 
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Nueva empresa registrada");
 		String nombreEmpresa=request.getParameter("nombre");
 		String paramFechaApertura=request.getParameter("fecha");
@@ -31,8 +31,7 @@ public class NuevaEmpresa {
 		empresa.setFechaAbertura(fechaAbertura);
 		DB baseDeDatos=new DB();
 		baseDeDatos.agregarEmpresa(empresa);
-		
-		response.sendRedirect("entrada?accion=ListaEmpresas");
+		return "redirect:entrada?accion=ListaEmpresas";
 	}
 
 }
