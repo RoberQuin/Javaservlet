@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class ListaEmpresas implements Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		System.out.println("Listando empresas");
 		DB baseDeDatos=new DB();
 		List<Empresa> listaEmpresas = baseDeDatos.getEmpresas();
