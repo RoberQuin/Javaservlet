@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<c:import url="logout-parcial.jsp"></c:import>
 	<form action="${linkentradaServlet }" method="post">
 		Nombre empresa: <input type="text" name="nombre"/>
 		Fecha de Apertura: <input type="text" name="fecha"/>
